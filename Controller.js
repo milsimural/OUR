@@ -1,4 +1,4 @@
-// const Model = require('./Model');
+const Model = require('./Model');
 
 // View => 1. выбранная категория, 2. ответ пользователя
 // Model =>
@@ -16,16 +16,13 @@ class Controller {
   ) {
     this.data = data;
     this.questionNum = 0;
-    this.score = 0;
-    // this.askedQuestions = 0
+    // this.score = 0;
   }
-
-  // возвращаю всю дату по
 
   sendQuestion(category = 1) {
     if (category === 1) {
       if (this.questionNum >= this.data.ястребы.length) {
-        return this.score;
+        return Model.getPoints();
       }
       const result = this.data.ястребы[this.questionNum];
       this.questionNum++;
@@ -33,7 +30,7 @@ class Controller {
     }
     if (category === 2) {
       if (this.questionNum >= this.data.еноты.length) {
-        return this.score;
+        return Model.getPoints();
       }
       const result = this.data.еноты[this.questionNum];
       this.questionNum++;
@@ -41,7 +38,7 @@ class Controller {
     }
     if (category === 3) {
       if (this.questionNum >= this.data.выдры.length) {
-        return this.score;
+        return Model.getPoints();
       }
       const result = this.data.выдры[this.questionNum];
       this.questionNum++;
@@ -51,23 +48,11 @@ class Controller {
 
   sendReaction(questAnswObj, userAnswer) {
     if (Object.values(questAnswObj).toString() === userAnswer) {
-      this.score++;
+      Model.addPoints();
       return '👍';
     }
     return '👎';
   }
-
-  //   saveQuestionId() {
-  //     return (askedQuestions += 1);
-  //   }
-
-  //   getUserAnswerFromView() {}
-
-  //   processAnswer() {}
-
-  //   sendReaction; // [{в: о}, ответ пользователя ] // отправить реакцию
-
-  //   sendScore;
 }
 
 console.log(Controller.sendQuestion(1));
