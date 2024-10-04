@@ -9,4 +9,6 @@ const controller = new Controller(model.data);
 const view = new View();
 
 // Запуск приложения
-view.Run();
+// view.Run();
+
+console.log(controller.sendQuestion(1));
