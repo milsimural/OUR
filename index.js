@@ -10,3 +10,4 @@ const view = new View();
 
 // Запуск приложения
 view.Run();
+
